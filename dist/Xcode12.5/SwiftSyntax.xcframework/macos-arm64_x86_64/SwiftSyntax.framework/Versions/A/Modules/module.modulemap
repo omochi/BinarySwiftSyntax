@@ -1,0 +1,4 @@
+framework module SwiftSyntax {
+  header "SwiftSyntax-Swift.h"
+  requires objc
+}
