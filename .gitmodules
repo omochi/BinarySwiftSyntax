@@ -1,0 +1,3 @@
+[submodule "Deps/swift-syntax"]
+	path = Deps/swift-syntax
+	url = https://github.com/apple/swift-syntax
