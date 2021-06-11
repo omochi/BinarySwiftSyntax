@@ -50,8 +50,10 @@
 		D600D72326725B4E00833042 /* Diagnostic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D600D6EC26725B4E00833042 /* Diagnostic.swift */; };
 		D600D72426725B4E00833042 /* SourceLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = D600D6ED26725B4E00833042 /* SourceLength.swift */; };
 		D600D72726725B7200833042 /* _CSwiftSyntax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D600D6A626725B0300833042 /* _CSwiftSyntax.framework */; };
-		D600D72826725B7200833042 /* _CSwiftSyntax.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D600D6A626725B0300833042 /* _CSwiftSyntax.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D600D72826725B7200833042 /* _CSwiftSyntax.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D600D6A626725B0300833042 /* _CSwiftSyntax.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D600D72E26725C9400833042 /* _CSwiftSyntax.h in Headers */ = {isa = PBXBuildFile; fileRef = D600D72D26725C2C00833042 /* _CSwiftSyntax.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D63EC4BD2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D63EC4BC2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib */; };
+		D63EC4BE2673B35600D047FD /* lib_InternalSwiftSyntaxParser.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D63EC4BC2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D600D72826725B7200833042 /* _CSwiftSyntax.framework in Embed Frameworks */,
+				D63EC4BE2673B35600D047FD /* lib_InternalSwiftSyntaxParser.dylib in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +130,7 @@
 		D600D6ED26725B4E00833042 /* SourceLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceLength.swift; sourceTree = "<group>"; };
 		D600D72C26725C0200833042 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		D600D72D26725C2C00833042 /* _CSwiftSyntax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _CSwiftSyntax.h; sourceTree = "<group>"; };
+		D63EC4BC2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = lib_InternalSwiftSyntaxParser.dylib; path = SwiftSyntax/Deps/lib_InternalSwiftSyntaxParser.dylib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D600D72726725B7200833042 /* _CSwiftSyntax.framework in Frameworks */,
+				D63EC4BD2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +175,7 @@
 		D600D69826725AE500833042 /* SwiftSyntax */ = {
 			isa = PBXGroup;
 			children = (
+				D63EC4BF2673B35D00D047FD /* Deps */,
 				D600D6B526725B3900833042 /* Sources */,
 				D600D69A26725AE500833042 /* Info.plist */,
 			);
@@ -282,6 +288,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D63EC4BF2673B35D00D047FD /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				D63EC4BC2673B34600D047FD /* lib_InternalSwiftSyntaxParser.dylib */,
+			);
+			path = Deps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,7 +618,11 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Deps/Xcode12.5",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omochimetaru.SwiftSyntax;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -632,7 +650,11 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Deps/Xcode12.5",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omochimetaru.SwiftSyntax;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -658,7 +680,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = _CSwiftSyntax/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omochimetaru.-CSwiftSyntax";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -685,7 +707,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = _CSwiftSyntax/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omochimetaru.-CSwiftSyntax";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
