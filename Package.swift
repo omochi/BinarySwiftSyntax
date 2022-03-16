@@ -21,11 +21,11 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "SwiftSyntax-Xcode12.5",
-            path: "dist/Xcode12.5/SwiftSyntax.xcframework"
+            path: "dist/SwiftSyntax-Xcode12.5.xcframework"
         ),
         .binaryTarget(
             name: "SwiftSyntax-Xcode13.0",
-            path: "dist/Xcode13.0/SwiftSyntax.xcframework"
+            path: "dist/SwiftSyntax-Xcode13.0.xcframework"
         ),
     ]
 )
